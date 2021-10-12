@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace DoorsForDog
 {
@@ -22,6 +23,13 @@ namespace DoorsForDog
             {
                 door.open();
             }
+            TimerCallback tm = new TimerCallback(doner);
+            Timer timer = new Timer(tm, 0, 5000, Timeout.Infinite);
+        }
+        private void doner(object obj)
+        {
+            door.close();
+            Console.WriteLine("Автоматика сработала через 5 секунд.");
         }
     }
 }
