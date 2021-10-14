@@ -19,7 +19,10 @@ namespace DoorsForDog
             {
                 Thread.Sleep(10000);
             }
-            catch (ThreadInterruptedException e){}
+            catch (ThreadInterruptedException e)
+            {
+                var q = e;
+            }
             Console.WriteLine("...но он застрял снаружи!");
             Console.WriteLine("\nФидо начинает лаять...");
             Console.WriteLine("... Джина хватает пульт дистанционного управления.");
