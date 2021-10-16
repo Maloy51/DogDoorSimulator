@@ -8,10 +8,12 @@ namespace DoorsForDog
         static void Main(string[] args)
         {
             DogDoor door = new DogDoor();
+            BarkRecognizer recognizer = new BarkRecognizer(door);
             Remote remote = new Remote(door);
-            //Console.WriteLine("Фидо лает, чтобы выйти на улицу...");
-            Console.WriteLine();
-            remote.pressButton();
+
+            // Имитация лая для распознователя:
+            Console.WriteLine("Фидо начинает лаять.");
+            recognizer.recognize("Гав");
             Console.WriteLine("\nФидо ушел на улицу...");
             Console.WriteLine("\nФидо всё готово...");
             //remote.pressButton();
@@ -24,13 +26,13 @@ namespace DoorsForDog
                 var q = e;
             }
             Console.WriteLine("...но он застрял снаружи!");
+            
+            // Имитация повторного лая:
             Console.WriteLine("\nФидо начинает лаять...");
-            Console.WriteLine("... Джина хватает пульт дистанционного управления.");
+            recognizer.recognize("Гав");
             Console.WriteLine("\nФидо вернулся в дом...");
-            remote.pressButton();
-            //remote.pressButton();
 
-            Console.WriteLine("Нажмите ENTER, для окончании программы..");
+            Console.WriteLine("\nНажмите ENTER, для окончании программы..");
             Console.ReadLine();
         }
     }

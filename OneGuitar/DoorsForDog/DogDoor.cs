@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace DoorsForDog
 {
@@ -15,6 +16,8 @@ namespace DoorsForDog
         {
             Console.WriteLine("Дверь для собаки открывается.");
             _open = true;
+
+            Timer timer = new Timer(new TimerCallback(run), null , 5000, -1);
         }
         public void close()
         {
@@ -24,6 +27,11 @@ namespace DoorsForDog
         public bool isOpen()
         {
             return _open;
+        }
+        private void run(object obj)
+        {
+            close();
+            Console.WriteLine("Задержка закрытия двери на 5 сек.");
         }
     }
 }
